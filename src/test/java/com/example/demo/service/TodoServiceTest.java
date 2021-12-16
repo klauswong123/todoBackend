@@ -47,6 +47,17 @@ public class TodoServiceTest {
         assertEquals(todo1, actual);
     }
 
+    @Test
+    void should_return_todo_when_perform_post_given_todo() throws Exception {
+        //given
+        Todo todo1 = new Todo("Spring","Done");
+        //when
+        given(todoRepository.insert(todo1))
+                .willReturn(todo1);
+        Todo actual = todoService.create(todo1);
+        //then
+        assertEquals(todo1, actual);
+    }
 
     @Test
     void should_return_update_todo_when_perform_put_given_todo_id() throws Exception {
@@ -63,7 +74,6 @@ public class TodoServiceTest {
         System.out.println(actual.getContent());
         //then
         assertEquals(updatedCompany.getId(), actual.getId());
-
     }
 
 
